@@ -7,7 +7,6 @@ function cubeNumber(number){
     }
 }
 
-
 function matchFinder(string1, string2) {
     if (typeof string1 !== 'string' || typeof string2 !== 'string') {
         return "please give as a parameter string type";
@@ -47,15 +46,33 @@ function sortMaker(arr) {
     }
    }
 
-
-   function findAddress(addressObject) {
-    const street = addressObject.street || "__";
-    const house = addressObject.house || "__";
-    const society = addressObject.society || "__";
-
-    return `${street},${house},${society}`;
+   function findAddress(inputObject) {
+    let output = "";
+    
+    if ('street' in inputObject) {
+        output += inputObject.street;
+    } else {
+        output += "__";
+    }
+    
+    output += ",";
+    
+    if ('house' in inputObject) {
+        output += inputObject.house;
+    } else {
+        output += "__";
+    }
+    
+    output += ",";
+    
+    if ('society' in inputObject) {
+        output += inputObject.society;
+    } else {
+        output += "__";
+    }
+    
+    return output;
 }
-
 
 function canPay(changeArray, totalDue) {
     let sum = 0;
